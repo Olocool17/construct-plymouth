@@ -20,11 +20,23 @@ construct_echo "\t|------------------|"
 construct_echo ""
 construct_echo "Theme to be installed: ${THEME}"
 
-PLYMOUTH_THEME_DIR="/usr/share/themes"
+PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes"
 
 if [ ! -d ${PLYMOUTH_THEME_DIR} ]
 then
     construct_echo "Directory ${PLYMOUTH_THEME_DIR} does not exist."
     exit
 fi
+
+construct_echo "Deleting old theme directory..."
+sudo rm -r  ${PLYMOUTH_THEME_DIR}/${THEME}
+
+construct_echo "Making theme directory..."
+sudo mkdir -p ${PLYMOUTH_THEME_DIR}/${THEME}
+
+construct_echo "Copying ${THEME} to previously created directory"
+sudo cp -r ${THEME}-theme/* ${PLYMOUTH_THEME_DIR}/${THEME} 
+
+consruct-echo "Setting Plymouth theme to ${THEME}"
+sudo plymouth-set-default-theme -R ${THEME}
 exit
