@@ -5,15 +5,22 @@ window_height = Window.GetHeight();
 origin_x = Window.GetX();
 origin_y = Window.GetY();
 
-background_col = 19/255;
+background_col = 19.0/255;
 Window.SetBackgroundTopColor(0, background_col, background_col);
 Window.SetBackgroundBottomColor(0, background_col, background_col);
 
-background_image = Image("background.png");
-background_sprite = Sprite(background_image);
+background_image = ImageNew("background.png");
+background_sprite = SpriteNew(background_image);
 background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
 background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
 background_sprite.SetPosition(background_x, background_y);
 
 // while starting, animation should play that resets the Dot matrix
-status = starting;
+status = "starting";
+
+fun refresh_callback()
+{
+
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
