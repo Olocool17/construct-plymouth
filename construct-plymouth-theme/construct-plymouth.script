@@ -8,11 +8,11 @@ origin_y = Window.GetY();
 Window.SetBackgroundTopColor(0, 0.0745, 0.0745);
 Window.SetBackgroundBottomColor(0, 0.0745, 0.0745);
 
-//background_image = Image("background.png");
-//background_sprite = Sprite(background_image);
-//background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
-//background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
-//background_sprite.SetPosition(background_x, background_y, 0);
+background_image = Image("background.png");
+background_sprite = Sprite(background_image);
+background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
+background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
+background_sprite.SetPosition(background_x, background_y, 0);
 
 // while starting, animation should play that resets the Dot matrix
 //status = "starting";
