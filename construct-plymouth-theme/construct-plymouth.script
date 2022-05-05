@@ -5,22 +5,36 @@ window_height = Window.GetHeight();
 origin_x = Window.GetX();
 origin_y = Window.GetY();
 
-background_col = 19.0/255;
-Window.SetBackgroundTopColor(0, background_col, background_col);
-Window.SetBackgroundBottomColor(0, background_col, background_col);
+Window.SetBackgroundTopColor(0, 0.0745, 0.0745);
+Window.SetBackgroundBottomColor(0, 0.0745, 0.0745);
 
-background_image = Image("background.png");
-background_sprite = Sprite(background_image);
-background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
-background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
-background_sprite.SetPosition(background_x, background_y, -10);
+//background_image = Image("background.png");
+//background_sprite = Sprite(background_image);
+//background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
+//background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
+//background_sprite.SetPosition(background_x, background_y, 0);
 
 // while starting, animation should play that resets the Dot matrix
-status = "starting";
+//status = "starting";
 
-fun refresh_callback()
+fun animation()
 {
 
 }
 
-Plymouth.SetRefreshFunction(refresh_callback);
+Plymouth.SetRefreshFunction(animation);
+
+fun display_password_box(prompt, bullets)
+{
+
+
+}
+
+Plymouth.SetDisplayPasswordFunction(display_password_box);
+
+fun reset_password_box()
+{
+
+}
+
+Plymouth.SetDisplayNormalFunction();
