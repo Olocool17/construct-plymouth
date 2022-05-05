@@ -37,6 +37,6 @@ sudo mkdir -p ${PLYMOUTH_THEME_DIR}/${THEME}
 construct_echo "Copying ${THEME} to previously created directory"
 sudo cp -r ${THEME}-theme/* ${PLYMOUTH_THEME_DIR}/${THEME} 
 
-consruct-echo "Setting Plymouth theme to ${THEME}"
+consruct_echo "Setting Plymouth theme to ${THEME}"
 sudo plymouth-set-default-theme -R ${THEME}
 exit
