@@ -1,21 +1,32 @@
 // construct-plymouth script file
 
-window_width = Window.GetWidth();
-window_height = Window.GetHeight();
-origin_x = Window.GetX();
-origin_y = Window.GetY();
+window.width = Window.GetWidth();
+window.height = Window.GetHeight();
+origin.x = Window.GetX();
+origin.y = Window.GetY();
 
 Window.SetBackgroundTopColor(0, 0.0745, 0.0745);
 Window.SetBackgroundBottomColor(0, 0.0745, 0.0745);
 
-background_image = Image("background.png");
-background_sprite = Sprite(background_image);
-background_x = origin_x + ((window_width - background_image.GetWidth()) / 2);
-background_y = origin_y + ((window_height - background_image.GetHeight()) / 2);
-background_sprite.SetPosition(background_x, background_y, 0);
+background.image = Image("background.png");
+background.sprite = Sprite(background.image);
+background.x = origin.x + ((window.width - background.image.GetWidth()) / 2);
+background.y = origin.y + ((window.height - background.image.GetHeight()) / 2);
+background.sprite.SetPosition(background.x, background.y, 0);
 
-// while starting, animation should play that resets the Dot matrix
-//status = "starting";
+// while initialising, animation should play that resets the Dot matrix
+dot.status = "starting";
+dot.anim_index = 0;
+passwordbox.status = "none";
+
+fun debug_text(status_text)
+{
+    debug.image = Image.Tetx(status_text);
+    debug.sprite = Sprite(status_text);
+    debug.sprite.SetPosition(background.x , background.y, 100);
+}
+
+Plymouth.SetUpdateStatusFunction()
 
 fun animation()
 {
@@ -24,17 +35,43 @@ fun animation()
 
 Plymouth.SetRefreshFunction(animation);
 
+fun passwordbox_setup()
+{
+    global.passwordbox.x = 589 + background.x;
+    global.passwordbox.y = 524 + background.y;
+    global.passwordbox.z = 1;
+    global.passwordbox.anim_index = 0;
+    global.passwordbox.bullet_image = Image("bullet.png");
+    global.passwordbox.status = "starting";
+}
+
 fun display_password_box(prompt, bullets)
 {
-
-
+    if(!passwordbox)
+        passwordbox_setup();
+    for (i = 0; ( i < bullets || passwordbox.bullet[i]) && i < 38; i++)
+    {
+        if (!passwordbox.bullet[i])
+        {
+            passwordbox.bullet[i].sprite = Sprite(passwordbox.bullet_image);
+            passwordbox.bullet[i].x = passwordbox.x + 147 + (12 * i);
+            passwordbox.bullet[i].y = passwordbox.y + 101;
+            passwordbox.bullet[i].z = passwordbox.z + 1;
+            passwordbox.bullet[i].sprite.SetPosition(passwordbox.bullet[i].x, passwordbox.bullet[i].y. passwordbox.bullet[i].z);
+        }
+        if (i < bullets)
+            passwordbox.bullet[i].sprite.SetOpacity(1);
+        else
+            passwordbox.bullet[i].sprite.SetOpacity(0);
+    }
 }
 
 Plymouth.SetDisplayPasswordFunction(display_password_box);
 
 fun reset_password_box()
 {
-
+    global.dot.status = "trying";
+    global.dot.anim_index = 0;
 }
 
-Plymouth.SetDisplayNormalFunction();
+Plymouth.SetDisplayNormalFunction(reset_password_box);
