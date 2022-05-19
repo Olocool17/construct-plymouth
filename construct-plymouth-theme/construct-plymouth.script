@@ -18,30 +18,36 @@ background.sprite.SetPosition(background.x, background.y, 0);
 dot.status = "starting";
 dot.anim_index = 0;
 passwordbox.status = "none";
-time = 0;
+debug_time = 0;
+debug_progress = 0;
 debug_text = "none";
+debug_frames = 0;
+
+
+fun update_boot_progress(boot_time, boot_progress)
+{
+    global.debug_time = boot_time;
+    global.debug_progress = boot_progress;
+}
+Plymouth.SetBootProgressFunction(update_boot_progress);
 
 fun update_debug_text(status_text)
 {
     global.debug_text = status_text;
 }
-
 Plymouth.SetUpdateStatusFunction(update_debug_text);
-
-fun update_keyboard_text(character)
-{
-    keyboard_image = Image.Text("Current Char: " + character, 1, 1, 1);
-    keyboard.sprite = Sprite(keyboard_image);
-    keyboard.sprite.SetPosition(background.x + 100, background.y + 210, 10);
-}
-Plymouth.SetKeyboardInputFunction(update_keyboard_text);
 
 fun animation()
 {
-    global.time++;
-    global.debug_image = Image.Text(global.debug_text + time, 1, 1, 1);
+    global.debug_frames++;
+    global.debug_image = Image.Text(global.debug_text + " | " + global.debug_progress + " | " + global.debug_time + " | " + global.debug_frames, 1, 1, 1);
     global.debug.sprite = Sprite(global.debug_image);
-    global.debug.sprite.SetPosition(background.x + 100 , background.y + 110, 10);
+    global.debug.sprite.SetPosition(background.x + 50, background.y + 50, 10);
+    // global.status_display_image = Image.Text(global.passwordbox.status + " | " + global.dot.status, 1, 1, 1);
+    global.status_display_image = Image.Text(global.dot.status, 1, 1, 1);   
+    global.status_display.sprite = Sprite(global.status_display_image);
+    global.status_display.sprite.SetPosition(background.x + 50, background.y + 150, 10);
+
 }
 
 Plymouth.SetRefreshFunction(animation);
@@ -58,6 +64,10 @@ fun passwordbox_setup()
 
 fun display_password_box(prompt, bullets)
 {
+    if (gloal.dot.status != "starting")
+    {
+        global.dot.status = "waiting";
+    }
     if(passwordbox.status == "none")
         passwordbox_setup();
     for (i = 0; ( i < bullets || passwordbox.bullet[i]) && i < 38; i++)
@@ -81,7 +91,10 @@ Plymouth.SetDisplayPasswordFunction(display_password_box);
 
 fun reset_password_box()
 {
-    global.dot.status = "trying";
+    if (global.dot.status != "starting") 
+    {
+        global.dot.status = "trying";
+    }
     global.dot.anim_index = 0;
 }
 
