@@ -30,18 +30,18 @@ Plymouth.SetUpdateStatusFunction(update_debug_text);
 
 fun update_keyboard_text(character)
 {
-    keyboard_image = Image.Text("Current Char:" + character);
+    keyboard_image = Image.Text("Current Char: " + character, 1, 1, 1);
     keyboard.sprite = Sprite(keyboard_image);
-    keyboard.sprite.SetPosition(background.x + 10, background.y + 110, 10);
+    keyboard.sprite.SetPosition(background.x + 100, background.y + 210, 10);
 }
 Plymouth.SetKeyboardInputFunction(update_keyboard_text);
 
 fun animation()
 {
     global.time++;
-    global.debug_image = Image.Text(global.debug_text + time);
+    global.debug_image = Image.Text(global.debug_text + time, 1, 1, 1);
     global.debug.sprite = Sprite(global.debug_image);
-    global.debug.sprite.SetPosition(background.x + 10 , background.y + 10, 10);
+    global.debug.sprite.SetPosition(background.x + 100 , background.y + 110, 10);
 }
 
 Plymouth.SetRefreshFunction(animation);
