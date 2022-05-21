@@ -34,6 +34,7 @@ Plymouth.SetBootProgressFunction(update_boot_progress);
 fun update_debug_text(status_text)
 {
     global.debug_text = status_text;
+    global.dot.status = "terminating";
 }
 Plymouth.SetUpdateStatusFunction(update_debug_text);
 
@@ -43,10 +44,11 @@ fun animation()
     global.debug_image = Image.Text(global.debug_text + " | " + global.debug_progress + " | " + global.debug_time + " | " + global.debug_frames, 1, 1, 1);
     global.debug.sprite = Sprite(global.debug_image);
     global.debug.sprite.SetPosition(background.x + 50, background.y + 50, 10);
-    // global.status_display_image = Image.Text(global.passwordbox.status + " | " + global.dot.status, 1, 1, 1);
-    global.status_display_image = Image.Text(global.dot.status, 1, 1, 1);   
+    global.status_display_image = Image.Text(global.dot.status + " | " + global.passwordbox.status, 1, 1, 1);   
     global.status_display.sprite = Sprite(global.status_display_image);
     global.status_display.sprite.SetPosition(background.x + 50, background.y + 150, 10);
+
+
 
 }
 
@@ -64,7 +66,7 @@ fun passwordbox_setup()
 
 fun display_password_box(prompt, bullets)
 {
-    if (gloal.dot.status != "starting")
+    if (global.dot.status != "starting")
     {
         global.dot.status = "waiting";
     }
