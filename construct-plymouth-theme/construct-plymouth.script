@@ -34,7 +34,11 @@ Plymouth.SetBootProgressFunction(update_boot_progress);
 fun update_debug_text(status_text)
 {
     global.debug_text = status_text;
-    global.dot.status = "terminating";
+    if (passwordbox.status != "none")
+    {
+        global.dot.status = "terminating";
+        global.passwordbox.status = "terminating";
+    }
 }
 Plymouth.SetUpdateStatusFunction(update_debug_text);
 
@@ -97,7 +101,6 @@ fun reset_password_box()
     {
         global.dot.status = "trying";
     }
-    global.dot.anim_index = 0;
 }
 
 Plymouth.SetDisplayNormalFunction(reset_password_box);
