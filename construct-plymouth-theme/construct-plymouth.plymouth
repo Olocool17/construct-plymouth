@@ -4,5 +4,5 @@ Description=Construct splash screen with encryption support.
 ModuleName=script
 
 [script]
-ImageDir=/usr/share/plymouth/themes/construct-plymouth
+ImageDir=/usr/share/plymouth/themes/construct-plymouth/assets
 ScriptFile=/usr/share/plymouth/themes/construct-plymouth/construct-plymouth.script
