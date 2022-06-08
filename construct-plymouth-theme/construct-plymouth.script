@@ -133,12 +133,12 @@ fun deactivate_dot_matrix_tick(x, y)
 fun animation()
 {
     // DEBUG INFO
-    global.debug_frames++;
-    global.debug_image = Image.Text(global.debug_text + " | " + global.debug_progress + " | " + global.debug_time + " | " + global.debug_frames, 1, 1, 1);
-    global.debug.sprite = Sprite(global.debug_image);
-    global.debug.sprite.SetPosition(background.x + 50, background.y + 50, 10);
-    status_display_image = Image.Text(dot.status + " | " + passwordbox.status, 1, 1, 1);   
-    status_display.SetImage(status_display_image);
+    // global.debug_frames++;
+    // global.debug_image = Image.Text(global.debug_text + " | " + global.debug_progress + " | " + global.debug_time + " | " + global.debug_frames, 1, 1, 1);
+    // global.debug.sprite = Sprite(global.debug_image);
+    // global.debug.sprite.SetPosition(background.x + 50, background.y + 50, 10);
+    // status_display_image = Image.Text(dot.status + " | " + passwordbox.status, 1, 1, 1);   
+    // status_display.SetImage(status_display_image);
 
     // DOT STARTING ANIMATION : deactivate ticks left over from construct_grub
     if (dot.clear == 0)
