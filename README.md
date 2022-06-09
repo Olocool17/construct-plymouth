@@ -5,6 +5,8 @@ construct-plymouth
 A Plymouth theme intented to be used in conjunction with construct-grub.
 </p>
 
+![Image preview of the construct-plymouth theme](construct-plymouth-concept.png)
+
 https://user-images.githubusercontent.com/22843298/172948098-eb7262eb-d7cd-4ec6-81a6-53e391e5c3f9.mp4
 
 ---
