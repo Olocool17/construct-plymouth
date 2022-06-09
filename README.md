@@ -5,6 +5,8 @@ construct-plymouth
 A Plymouth theme intented to be used in conjunction with construct-grub.
 </p>
 
+https://user-images.githubusercontent.com/22843298/172948098-eb7262eb-d7cd-4ec6-81a6-53e391e5c3f9.mp4
+
 ---
 # Installation
 - Install `plymouth` from your distro's package manager. If you're experiencing any issues with this (especially on Arch), try installing `plymouth-git` instead from the AUR.
