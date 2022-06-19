@@ -3,7 +3,7 @@ THEME="construct-plymouth"
 PREFIX="[construct-plymouth]"
 
 construct_echo() {
-    echo -e "$PREFIX $@"
+    echo -e "$PREFIX $*"
 }
 
 #Check if run with priviliges
